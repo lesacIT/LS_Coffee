@@ -12,19 +12,13 @@
         <router-link to="/order">Hóa đơn</router-link>
         <router-link to="/cart" id="cart-link">Giỏ hàng</router-link>
         <form class="search" @submit.prevent="search">
-          <input
-            type="text"
-            v-model="searchTerm"
-            placeholder="Tìm kiếm sản phẩm"
-          />
+          <input type="text" v-model="searchTerm" placeholder="Tìm kiếm sản phẩm" />
 
           <button class="btn-search" @click="search">
             <fa class="icon" icon="fa-search" />
           </button>
         </form>
-        <router-link v-if="loggedIn && user.result.isAdmin" to="/admin"
-          >Quản lý</router-link
-        >
+        <router-link v-if="loggedIn && user.result.isAdmin" to="/admin">Quản lý</router-link>
         <a v-if="loggedIn">{{ user.result.name }}</a>
         <a v-if="loggedIn" @click="logout">
           <fa icon="fa-solid fa-right-from-bracket" size="xl" />
@@ -32,9 +26,8 @@
         <router-link v-if="!loggedIn" to="/login">Đăng nhập</router-link>
       </div>
     </div>
-    
-  </div>
 
+  </div>
 </template>
 
 <script>
@@ -94,12 +87,15 @@ export default {
 #products-link h1 {
   margin: 0;
 }
+
 #login-link button {
   margin-left: 16px;
 }
+
 .nav {
   background-color: #EEEEEE;
 }
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -127,6 +123,7 @@ export default {
   color: black;
   font-size: 18px;
 }
+
 .btn-search {
   width: 34px;
   height: 34px;
@@ -137,15 +134,18 @@ export default {
   align-items: center;
   cursor: pointer;
 }
+
 .btn-search .icon {
   color: gray;
   font-size: 20px;
 }
+
 .search {
   display: flex;
   flex-direction: row;
   margin: 15px 0 0 0;
 }
+
 .search input {
   border-radius: 10px 0 0 10px;
   border: none;

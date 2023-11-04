@@ -1,17 +1,13 @@
 <template>
   <div id="page-wrap">
-    <div class="search-results">
+    <div class="search-results" >
       <h2>Kết quả tìm kiếm cho "{{ searchTerm }}"</h2>
       <div v-if="products.length === 0">
         <p>Không có sản phẩm nào phù hợp với từ khóa "{{ searchTerm }}"</p>
       </div>
 
       <div class="grid-wrap">
-        <ProductsGridItem
-          v-for="product in products"
-          :key="product.id"
-          :product="product"
-        />
+        <ProductsGridItem v-for="product in products" :key="product.id" :product="product" />
       </div>
     </div>
   </div>
