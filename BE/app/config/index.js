@@ -4,7 +4,7 @@ const config = {
   },
 
   db: {
-    uri: process.env.DB_HOST || "mongodb://127.0.0.1:27017/project",
+    uri: process.env.DB_HOST || "mongodb://127.0.0.1:27017/LS_coffee",
   },
 };
 
