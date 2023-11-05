@@ -1,6 +1,6 @@
 <template>
   <!-- Slideshow -->
-  <div class="home__container">
+  <div class="home__container" style="margin: 15px;">
     <div class="slideshow">
       <div class="slideshow__inner">
         <div class="slideshow__item">
@@ -20,6 +20,54 @@
       </div>
     </div>
   </div>
+   <!-- Browse Categories -->
+   <div style="margin: 15px;">
+    <section class="home__container">
+                <div class="home__row">
+                    <h2 class="home__heading">Danh Mục</h2>
+                </div>
+                <div class="home__cate row row-cols-3 row-cols-md-1">
+                    <!-- Category item 1 -->
+                    <div class="col">
+                        <a href="#!">
+                            <article class="cate-item">
+                                <img src="../assets/img/category-item/item-1.png" alt="" class="cate-item__thumb" />
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">10.000đ - 40.000đ</h3>
+                                    <p class="cate-item__desc">Cà phê đóng gói</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- Category item 2 -->
+                    <div class="col">
+                        <a href="#!">
+                            <article class="cate-item">
+                                <img src="../assets/img/category-item/item-2.png" alt="" class="cate-item__thumb" />
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">100.000đ - 400.000đ</h3>
+                                    <p class="cate-item__desc">Cà Phê Túi</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- Category item 3 -->
+                    <div class="col">
+                        <a href="#!">
+                            <article class="cate-item">
+                                <img src="../assets/img/category-item/item-3.png" alt="" class="cate-item__thumb" />
+                                <div class="cate-item__info">
+                                    <h3 class="cate-item__title">1 triệu - 15 triệu</h3>
+                                    <p class="cate-item__desc">Cà Phê Cao Cấp</p>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </section>
+   </div>
 </template>
 
 <script>

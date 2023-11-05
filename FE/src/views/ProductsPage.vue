@@ -1,8 +1,13 @@
 <template>
  <NavBar2/>
-  <div id="page-wrap">
+  <!-- <div id="page-wrap">
+    <ProductsGrid :products="products" />
+  </div> -->
+  <div>
     <ProductsGrid :products="products" />
   </div>
+ 
+  
 </template>
 
 <script>

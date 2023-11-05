@@ -1,13 +1,13 @@
 <template>
   <footer >
     <div class="container ">
-      <div class="footer__row">
+      <div class="footer__row" >
         <!-- Footer column 1 -->
-        <div class="footer__col">
+        <div class="footer__col" >
           <!-- Logo -->
           <a href="./" class="logo footer__logo">
             <!-- <img src="./assets/icons/logo.svg" alt="grocerymart" class="logo__img" /> -->
-            <h1 class="logo__title">LS - COFFEE</h1>
+            <h1 class="logo__title" style="margin-top: 30px;">LS - COFFEE</h1>
           </a>
           <p class="footer__desc">
             Cà phê – điểm tựa của những giấc mơ.
@@ -22,7 +22,7 @@
 
         <!-- Footer column 2 -->
         <div class="footer__col">
-          <h3 class="footer__heading">Danh Mục</h3>
+          <h3 class="footer__heading" style="margin-top: 30px;">Danh Mục</h3>
           <ul class="footer__list">
             <li>
               <a href="#!" class="footer__link">Tất cả sản phẩm</a>
@@ -44,7 +44,7 @@
 
         <!-- Footer column 3 -->
         <div class="footer__col">
-          <h3 class="footer__heading">Hỗ trợ</h3>
+          <h3 class="footer__heading" style="margin-top: 30px;">Hỗ trợ</h3>
           <ul class="footer__list">
             <li>
               <a href="#!" class="footer__link">Địa Chỉ Cửa hàng</a>
@@ -57,7 +57,7 @@
 
         <!-- Footer column 4 -->
         <div class="footer__col">
-          <h3 class="footer__heading">Cửa Hàng</h3>
+          <h3 class="footer__heading" style="margin-top: 30px;" >Cửa Hàng</h3>
           <ul class="footer__list">
             <li>
               <a href="#!" class="footer__link">Dịch Vụ Khách Hàng</a>
@@ -76,7 +76,7 @@
 
         <!-- Footer column 5 -->
         <div class="footer__col">
-          <h3 class="footer__heading">Contact</h3>
+          <h3 class="footer__heading" style="margin-top: 30px;">Contact</h3>
           <ul class="footer__list">
             <li>
               <p class="footer__label">Email</p>

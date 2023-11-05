@@ -1,11 +1,19 @@
 <template>
-  <div class="grid-wrap">
+  <!-- <div class="grid-wrap">
     <ProductsGridItem
       v-for="product in products"
       :key="product.id"
       :product="product"
     />
+  </div> -->
+  <div class="row row-cols-4 row-cols-lg-2 row-cols-sm-1 g-3">
+    <ProductsGridItem
+    v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
   </div>
+   
 </template>
 
 <script>
