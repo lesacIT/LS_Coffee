@@ -1,5 +1,5 @@
 <template>
-  <footer >
+  <footer style="margin-top: 10px;">
     <div class="container ">
       <div class="footer__row" >
         <!-- Footer column 1 -->
@@ -76,7 +76,7 @@
 
         <!-- Footer column 5 -->
         <div class="footer__col">
-          <h3 class="footer__heading" style="margin-top: 30px;">Contact</h3>
+          <h3 class="footer__heading" style="margin-top: 30px;">Liên Hệ</h3>
           <ul class="footer__list">
             <li>
               <p class="footer__label">Email</p>

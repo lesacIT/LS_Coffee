@@ -8,7 +8,7 @@ import SignupPage from "../views/SignupPage";
 import CheckoutPage from "../components/CheckoutPage";
 import OrderPage from "../components/OrderPage";
 import SearchPage from "../views/SearchPage";
-// import AdminManagers from "../views/AdminManagers";
+import AdminManagers from "../views/AdminManagers";
 
 const routes = [
   {
@@ -48,11 +48,11 @@ const routes = [
     name: "SignupPage",
     component: SignupPage,
   },
-  // {
-  //   path: "/admin",
-  //   name: "AdminManagers",
-  //   component: AdminManagers,
-  // },
+  {
+    path: "/admin",
+    name: "AdminManagers",
+    component: AdminManagers,
+  },
   {
     path: "/search/:searchTerm",
     name: "SearchPage",

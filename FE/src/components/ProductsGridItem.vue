@@ -11,7 +11,7 @@
     </router-link>
   </div> -->
   <div class="col">
-    <article class="product-card">
+    <article class="product-card" style="margin-left: 10px; ">
       <div class="product-card__img-wrap">
         <router-link v-bind:to="'/products/' + product.id">
           <img :src="product.imageUrl" alt="" class="product-card__thumb" />
@@ -28,7 +28,7 @@
       <div class="product-card__row">
         <span class="product-card__price">{{ product.price }}VNĐ</span>
         <img src="../assets/icons/star.svg" alt="" class="product-card__star" />
-        <span class="product-card__score">4.3</span>
+        <span class="product-card__score">{{ product.averageRating }}</span>
       </div>
     </article>
   </div>

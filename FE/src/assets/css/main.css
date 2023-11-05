@@ -3448,7 +3448,7 @@ html {
   text-align: center;
   width: min(460px, 100%);
   margin: 0 auto;
-  padding: 50px 0;
+  /* padding: 50px 0; */
 }
 @media (max-width: 767.98px) {
   .auth__content-inner {
