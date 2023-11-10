@@ -136,7 +136,7 @@ table {
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 * {
@@ -183,7 +183,7 @@ select {
 
 input,
 textarea {
-  background: transparent;
+  /* background: transparent; */
 }
 
 input:-webkit-autofill,
@@ -1913,7 +1913,7 @@ html {
 }
 .footer__heading {
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.8rem;
 }
 .footer__list {
@@ -2421,7 +2421,7 @@ html {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 46px;
+  height: 36.8px;
   padding: 0 20px;
   border-radius: 6px;
   background: #f8f8fb;

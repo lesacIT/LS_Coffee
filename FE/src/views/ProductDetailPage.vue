@@ -82,7 +82,7 @@
                   <div class="row">
                     <div class="col-5 col-xxl-6 col-xl-12">
                       <div class="prod-prop">
-                        <img src="../assets/icons/star.svg" alt="" class="prod-prop__icon" />
+                        <img src="../assets/icons/star.svg" alt="" class="prod-prop__icon" style="height: 24px; width: 24px;" />
                         <h4 class="prod-prop__title">({{ product.averageRating }}) 1100 reviews</h4>
                       </div>
                       <label for="" class="form__label prod-info__label">Khối Lượng</label>
@@ -109,14 +109,14 @@
                     <div class="col-7 col-xxl-6 col-xl-12">
                       <div class="prod-props">
                         <div class="prod-prop">
-                          <img src="../assets/icons/document.svg" alt="" class="prod-prop__icon icon" />
+                          <img src="../assets/icons/document.svg" alt="" class="prod-prop__icon icon" style="height: 24px; width: 24px;"/>
                           <h4 class="prod-prop__title">So Sánh
                             <p>Sản phẩm tương tự</p>
                           </h4>
                           
                         </div>
                         <div class="prod-prop">
-                          <img src="../assets/icons/buy.svg" alt="" class="prod-prop__icon icon" />
+                          <img src="../assets/icons/buy.svg" alt="" class="prod-prop__icon icon" style="height: 24px; width: 24px;" />
                           <div>
                             <h4 class="prod-prop__title">Vận chuyển</h4>
                             <p class="prod-prop__desc">Vận chuyển
@@ -124,7 +124,7 @@
                           </div>
                         </div>
                         <div class="prod-prop">
-                          <img src="../assets/icons/bag.svg" alt="" class="prod-prop__icon icon" />
+                          <img src="../assets/icons/bag.svg" alt="" class="prod-prop__icon icon" style="height: 24px; width: 24px;"/>
                           <div>
                             <h4 class="prod-prop__title">Nhận Hàng</h4>
                             <p class="prod-prop__desc">Tại Cửa Hàng Số 2,Ninh Kiều Hôm Nay</p>
@@ -149,7 +149,7 @@
                               sản phẩm đã có trong giỏ hàng
                             </button>
                             <button class="like-btn prod-info__like-btn">
-                              <img src="../assets/icons/heart.svg" alt="" class="like-btn__icon icon" />
+                              <img src="../assets/icons/heart.svg" alt="" class="like-btn__icon icon" style="height: 24px; width: 24px;" />
                               <img src="../assets/icons/heart-red.svg" alt="" class="like-btn__icon--liked" />
                             </button>
                           </div>

@@ -1,16 +1,15 @@
 <template>
   <div v-if="cartItems.length > 0">
-    <CartsListItem
-      v-for="item in cartItems"
-      :key="item.product.id"
-      :product="item.product"
-      :quantity="item.quantity"
-      :user="user"
-      :remove="removeFromCartHandler"
-      :loadData="loadData"
-    />
+    <CartsListItem v-for="item in cartItems" :key="item.product.id" :product="item.product" :quantity="item.quantity"
+      :user="user" :remove="removeFromCartHandler" :loadData="loadData" />
+
   </div>
-  <p v-else>Chưa có sản phẩm trong giỏ hàng!</p>
+  <p v-else>
+    <img src="../assets/img/product/item-8.webp" alt="" style="width: 870px;height: 502px;">
+    <!-- Chưa có sản phẩm trong giỏ hàng! -->
+
+
+  </p>
 </template>
 <script>
 import CartsListItem from "./CartsListItem.vue";
