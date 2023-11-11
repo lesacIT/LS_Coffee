@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <h1>Đơn hàng của bạn</h1>
     <div class="order-list">
       <div v-for="order in orders" :key="order._id" class="order-item">
@@ -12,22 +12,70 @@
 
           <div class="order-detail-item">Email: {{ order.email }}</div>
           <div class="order-detail-item">Addres: {{ order.address }}</div>
-          <div
-            class="order-detail-item"
-            v-for="item in order.cartItems"
-            :key="item._id"
-          >
+          <div class="order-detail-item" v-for="item in order.cartItems" :key="item._id">
             <span>{{ item.product.name }}</span>
-            <span class="price"
-              >{{ item.product.price }}đ x{{ item.quantity }}</span
-            >
+            <span class="price">{{ item.product.price }}đ x{{ item.quantity }}</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div style="padding-top: 200px;"> 
+  <div style="padding-top: 200px;">
 
+  </div>  -->
+
+
+  <div class="col-8 col-xl-12" style="margin: auto;">
+    <h1 class="cart-info__sub-heading">Đơn Hàng Của Bạn </h1>
+    <div class="cart-info__list">
+      <!-- Cart item 1 -->
+      <article class="cart-item" v-for="order in orders" :key="order._id">
+        <!-- <a href="../product-detail.html">
+          <img src="../assets/img/product/item-1.png" alt="" class="cart-item__thumb" />
+        </a> -->
+        
+        <div class="cart-item__content">
+          <div class="cart-item__content-left" v-for="item in order.cartItems" :key="item._id"
+            style="margin-right: 10px;">
+            <h3 class="cart-item__title" style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 250px; ">
+              <a href="../product-detail.html">
+                {{ item.product.name }}
+              </a>
+            </h3>
+            <p class="cart-item__price-wrap">
+              {{ order.totalPrice }} VND| <span class="cart-item__status">In Stock</span>
+            </p>
+            <div class="cart-item__ctrl cart-item__ctrl--md-block">
+              <div class="cart-item__input">
+                Đơn Hàng được giao thành công
+                <!-- <img class="icon" src="../assets/icons/arrow-down-2.svg" alt="" /> -->
+              </div>
+              <div class="cart-item__input">
+
+                <span>{{ item.quantity }} sản phẩm</span>
+
+              </div>
+            </div>
+          </div>
+          <div class="cart-item__content-right">
+            <p class="cart-item__total-price">
+              Ngày đặt hàng: {{ order.date }}
+            </p>
+            <div class="cart-item__ctrl">
+
+              <div class="order-total">Tổng tiền: {{ order.totalPrice }} VND</div>
+            </div>
+
+          </div>
+        </div>
+
+      </article>
+
+
+    </div>
   </div>
 </template>
 

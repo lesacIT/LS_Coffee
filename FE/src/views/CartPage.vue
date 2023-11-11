@@ -35,7 +35,7 @@
                 <div class="cart-info__continue">
                   <a href="../" class="cart-info__continue-link">
                     <img class="cart-info__continue-icon icon" src="../assets/icons/arrow-down-2.svg" alt="" />
-                    Continue Shopping
+                    Tiếp Tục Mua Hàng
                   </a>
                 </div>
               </div>

@@ -28,16 +28,16 @@
               <a href="#!" class="footer__link">Tất cả sản phẩm</a>
             </li>
             <li>
-              <a href="#!" class="footer__link">Cà phê 1</a>
+              <a href="./" class="footer__link">Cà phê đóng gói</a>
             </li>
             <li>
-              <a href="#!" class="footer__link">Cà phê 1</a>
+              <a href="#!" class="footer__link">Cà phê túi</a>
             </li>
             <li>
-              <a href="#!" class="footer__link">Khuyến mãi </a>
+              <a href="./" class="footer__link">Cà Phê Cao Cấp</a>
             </li>
             <li>
-              <a href="#!" class="footer__link">Sản phẩm mới</a>
+              <a href="./" class="footer__link">Sản phẩm mới</a>
             </li>
           </ul>
         </div>
@@ -47,10 +47,10 @@
           <h3 class="footer__heading" style="margin-top: 30px;">Hỗ trợ</h3>
           <ul class="footer__list">
             <li>
-              <a href="#!" class="footer__link">Địa Chỉ Cửa hàng</a>
+              <a href="./" class="footer__link">Địa Chỉ Cửa hàng</a>
             </li>
             <li>
-              <a href="#!" class="footer__link">Tình trạng Đặt Hàng</a>
+              <a href="./" class="footer__link">Tình trạng Đặt Hàng</a>
             </li>
           </ul>
         </div>

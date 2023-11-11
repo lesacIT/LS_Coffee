@@ -1,36 +1,5 @@
 <template>
-  <!-- <div class="signup-container">
-    <form class="signup-form" @submit.prevent="signup">
-      <h2>Đăng ký</h2>
-      <div class="form-group">
-        <label for="text">Name</label>
-        <input type="name" id="name" v-model="name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <div class="form-group">
-        <label for="confirm-password">Confirm Password</label>
-        <input
-          type="password"
-          id="confirm-password"
-          v-model="confirmPassword"
-          required
-        />
-      </div>
-      <button type="submit">Đăng ký</button>
-      <div>
-        <router-link to="/login" id="login-link">
-          <h4>Đăng nhập với tài khoản</h4>
-        </router-link>
-      </div>
-    </form>
-  </div> -->
+  
   <!-- Auth content -->
   <div id="auth-content" class="auth__content hide">
     <div class="auth__content-inner">
@@ -40,7 +9,7 @@
         <div class="form__group">
           <div class="form__text-input">
             <input type="name" name="" id="name" placeholder="Tên" class="form__input" v-model="name" required/>
-            <img src="../assets/icons/message.svg" alt="" class="form__input-icon" />
+            <img src="../assets/icons/icon-user.png" alt="" class="form__input-icon" />
             <img src="../assets/icons/form-error.svg" alt="" class="form__input-icon-error" />
           </div>
           <p class="form__error">Email is not in correct format</p>
