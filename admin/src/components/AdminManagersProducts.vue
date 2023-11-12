@@ -58,71 +58,67 @@
   </div> -->
 
   <div id="content-wrapper">
-        <div class="container-fluid">
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Quản lý</a>
-            </li>
-            <li class="breadcrumb-item active">Sản phẩm</li>
-          </ol>
-          <!-- DataTables Example -->
-          <!-- <div class="action-bar">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Quản lý</a>
+        </li>
+        <li class="breadcrumb-item active">Sản phẩm</li>
+      </ol>
+      <!-- DataTables Example -->
+      <!-- <div class="action-bar">
             <input type="submit" class="btn btn-primary btn-sm" value="Thêm" name="add">
             <input type="submit" class="btn btn-danger btn-sm" value="Xóa" name="delete">
           </div> -->
-          <div class="card mb-3">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th><input type="checkbox" onclick="checkAll(this)"></th>
-                      <th>Mã SP</th>
-                      <th style="width:50px">Tên Sản Phẩm </th>
-                      <th>Hình ảnh</th>
-                      <th >Giá bán sản phẩm</th>
-                      <th>Đánh giá</th>
-                      <th style="max-width:800px;text-align: center;">Mô Tả</th>
-                      <th></th>
-                      <th></th>
-                      
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" onclick="checkAll(this)"></th>
+                  <th>Mã SP</th>
+                  <th style="width:50px">Tên Sản Phẩm </th>
+                  <th>Hình ảnh</th>
+                  <th>Giá bán sản phẩm</th>
+                  <th>Đánh giá</th>
+                  <th style="max-width:800px;text-align: center;">Mô Tả</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(product, index) in products" :key="index">
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(product, index) in products" :key="index" >
+                  <td><input type="checkbox"></td>
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ product.name }}</td>
+                  <td><img :src="product.imageUrl"></td>
+                  <td>{{ product.price }} VND</td>
+                  <td>{{ product.averageRating }}</td>
+                  <td style="max-width:800px">{{ product.description }}</td>
 
-                      <td><input type="checkbox"></td>
-                      <td>{{ index+1 }}</td>
-                      <td>{{ product.name }}</td>
-                      <td><img :src="product.imageUrl"></td>
-                      <td>{{ product.price }} VND</td>
-                      <td>{{ product.averageRating }}</td>
-                      <td style="max-width:800px">{{ product.description }}</td>
-                      <router-link to="/adminEdit">
-                        <td style="border: none;"><input type="button" value="Sửa" class="btn btn-warning btn-sm"></td>
-                      </router-link>
-                      <td><input type="button"  @click="deleteProduct(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
-                      
-                    </tr>
+                  <td><input type="button" @click="deleteProduct(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
+
+                </tr>
+
+              </tbody>
+            </table>
           </div>
         </div>
-        <!-- /.container-fluid -->
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Nguyễn Lê Sắc @2023</span>
-            </div>
-          </div>
-        </footer>
       </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Nguyễn Lê Sắc @2023</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 

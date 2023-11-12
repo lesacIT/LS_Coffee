@@ -92,6 +92,8 @@
             @click="selectedOption = 'products'" >Danh sách</a>
             <a class="dropdown-item" :class="{ active: selectedOption === 'productsAdd' }"
             @click="selectedOption = 'productsAdd'">Thêm</a>
+            <a class="dropdown-item" :class="{ active: selectedOption === 'productsEdit' }"
+            @click="selectedOption = 'productsEdit'">Cập Nhật</a>
           </div>
         </li>
         <!--  <li class="nav-item">
@@ -105,7 +107,7 @@
         </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-comments"></i>
-            <span>Comment</span></a>
+            <span>Bình Luận </span></a>
           <div class="dropdown-menu" aria-labelledby="">
             <a class="dropdown-item" href="../../pages/comment/list.html">Danh sách</a>
           </div>
