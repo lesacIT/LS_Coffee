@@ -1,0 +1,286 @@
+<template>
+  <!-- <div class="nav-container">
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'products' }"
+            @click="selectedOption = 'products'"
+          >
+            Quản lý sản phẩm danh sách sản phẩm
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'productsEdit' }"
+            @click="selectedOption = 'productsEdit'"
+          >
+            Quản lý chỉnh sửa sản phẩm 
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'users' }"
+            @click="selectedOption = 'users'"
+          >
+            Quản lý người dùng
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'orders' }"
+            @click="selectedOption = 'orders'"
+          >
+            Quản lý đơn hàng
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'productsAdd' }"
+            @click="selectedOption = 'productsAdd'"
+          >
+            Thêm Sản Phẩm
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+
+
+  <body id="page-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+      <a class="navbar-brand mr-1" href="index.html">LS Coffee</a>
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search -->
+      <!-- Navbar -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item no-arrow text-white">
+          <span>Chào Nguyễn Lê Sắc</span> |
+          <a class="text-white nounderline" href="#" data-toggle="modal" data-target="#logoutModal"
+          
+          >Thoát</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/dashboard/index.html"><i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Tổng quan</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-shopping-cart"></i>
+            <span>Đơn hàng</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/order/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/order/add.html">Thêm</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown  active show">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fab fa-product-hunt"></i>
+            <span>Sản phẩm</span></a>
+          <div class="dropdown-menu show" aria-labelledby="">
+            <a class="dropdown-item active"  :class="{ active: selectedOption === 'products' }"
+            @click="selectedOption = 'products'" >Danh sách</a>
+            <a class="dropdown-item" :class="{ active: selectedOption === 'productsAdd' }"
+            @click="selectedOption = 'productsAdd'">Thêm</a>
+          </div>
+        </li>
+        <!--  <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'productsAdd' }"
+            @click="selectedOption = 'productsAdd'"
+          >
+            Thêm Sản Phẩm
+          </button>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-comments"></i>
+            <span>Comment</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/comment/list.html">Danh sách</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="far fa-image"></i>
+            <span>Hình ảnh</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/image/list.html">Danh sách</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-user-alt"></i>
+            <span>Khách hàng</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/customer/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/customer/add.html">Thêm</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-folder"></i>
+            <span>Danh mục</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/category/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/category/add.html">Thêm</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-percentage"></i>
+            <span>Khuyến mãi</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/promotion/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/promotion/add.html">Thêm</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-shipping-fast"></i>
+            <span>Phí giao hàng</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/transport/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/transport/add.html">Thêm</a>
+          </div>
+        </li>
+        <li class="nav-item dropdow">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-users"></i>
+            <span>Nhân viên</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/staff/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/staff/add.html">Thêm</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-user-shield"></i>
+            <span>Phân quyền</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/permission/roles.html">Danh sách vai trò</a>
+            <a class="dropdown-item" href="../../pages/permission/add_role.html">Thêm vai trò</a>
+            <a class="dropdown-item" href="../../pages/permission/actions.html">Danh sách tác vụ</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/order_status/list.html"><i class="fas fa-star-half-alt"></i> <span>Trạng
+              thái đơn hàng</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-file-alt"></i>
+            <span>News letter</span></a>
+          <div class="dropdown-menu" aria-labelledby="">
+            <a class="dropdown-item" href="../../pages/newsletter/list.html">Danh sách</a>
+            <a class="dropdown-item" href="../../pages/newsletter/send.html">Gởi mail</a>
+          </div>
+        </li>
+      </ul>
+      <manage-products v-if="selectedOption === 'products'" />
+      <managers-products-edit v-if="selectedOption === 'productsEdit'" />
+      <managers-products-add v-if="selectedOption === 'productsAdd'" />
+      <manage-users v-if="selectedOption === 'users'" />
+      <manage-orders v-if="selectedOption === 'orders'" />
+
+      <!-- /.content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</template>
+
+<script>
+import ManageProducts from "../components/AdminManagersProducts.vue";
+import ManageUsers from "../components/AdminManagersUsers.vue";
+import ManageOrders from "../components/AdminManagersOrders.vue";
+import ManagersProductsEdit from "../components/AdminManagersProductsEdit.vue";
+import ManagersProductsAdd from "../components/AdminManagersProductsadd.vue";
+export default {
+  components: {
+    ManageProducts,
+    ManageUsers,
+    ManageOrders,
+    ManagersProductsEdit,
+    ManagersProductsAdd,
+  },
+  data() {
+    return {
+      selectedOption: "products",
+    };
+  },
+};
+</script>
+<style>
+.nav-container {
+  margin: 0 auto;
+  width: 600px;
+  background-color: #ffd400;
+  height: 60px;
+  border-radius: 0 0 20px 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 10px 10px 10px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  background-color: #ddd;
+  color: #333;
+  border-radius: 0.25rem;
+}
+
+.admin-btn {
+  background-color: #ffd400;
+  color: rgb(0, 0, 0);
+  border: none;
+}
+</style>
