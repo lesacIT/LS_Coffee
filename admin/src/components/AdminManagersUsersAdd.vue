@@ -60,51 +60,52 @@
       </tbody>
     </table>
   </div> -->
-<div id="content-wrapper">
-  <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Quản lý</a>
-      </li>
-      <li class="breadcrumb-item active">Khách hàng</li>
-    </ol>
-    <!-- DataTables Example -->
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th><input type="checkbox" onclick="checkAll(this)"></th>
-                <th>Tên </th>
-                <th>Email</th>
-                <th>Mật Khẩu </th>
-                <th>Quyền</th>
-                <th></th>
-                <th></th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(user,index) in users" :key="user.id">
-                <td><input type="checkbox"></td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>**********</td>
-                <td v-if="user.isAdmin == 1">Quản trị</td>
-                <td v-else>Người dùng</td>
-                <td> <input type="button" onclick="Edit('1');" value="Sửa" class="btn btn-warning btn-sm"></td>
-                <td><input type="button" @click="deleteUser(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
-              </tr>
-            </tbody>
-          </table>
+  <div id="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Quản lý</a>
+        </li>
+        <li class="breadcrumb-item active">Người dùng</li>
+      </ol>
+      <!-- /form -->
+      <form @submit.prevent="addUser">
+        <div class="form-group row">
+          <label class="col-md-12 control-label" for="fullname">Họ Và Tên</label>
+          <div class="col-md-9 col-lg-6">
+            <input name="fullname" v-model="newUser.name" type="text"  class="form-control">
+          </div>
         </div>
-      </div>
+        <div class="form-group row">
+          <label class="col-md-12 control-label" for="username">Email</label>
+          <div class="col-md-9 col-lg-6">
+            <input name="username" v-model="newUser.email" type="text"  class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-12 control-label" for="password">Mật Khẩu</label>
+          <div class="col-md-9 col-lg-6">
+            <input name="password" v-model="newUser.password"  type="password"  class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-12 control-label" for="role">Vai trò</label>
+          <div class="col-md-9 col-lg-6">
+            <select class="form-control"  v-model="newUser.isAdmin">
+              <option value="0">Người Dùng</option>
+              <option value="1">Quản Trị</option>
+            </select>
+          </div>
+        </div>
+        <button v-if="editingIndex === null" type="submit">
+        Thêm người dùng
+      </button>
+      </form>
+      <!-- /form -->
     </div>
+    <!-- /.container-fluid -->
   </div>
-  <!-- /.container-fluid -->
-</div>
 </template>
 <script>
 // import { v4 as uuidv4 } from "uuid";
@@ -295,5 +296,4 @@ td {
 th {
   font-weight: bold;
   background-color: #f2f2f2;
-}
-</style>
+}</style>

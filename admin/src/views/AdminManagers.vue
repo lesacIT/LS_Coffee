@@ -63,9 +63,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item no-arrow text-white">
           <span>Chào Nguyễn Lê Sắc</span> |
-          <a class="text-white nounderline" href="#" data-toggle="modal" data-target="#logoutModal"
-          
-          >Thoát</a>
+          <a class="text-white nounderline" href="#" data-toggle="modal" data-target="#logoutModal">Thoát</a>
         </li>
       </ul>
     </nav>
@@ -76,35 +74,56 @@
           <a class="nav-link" href="../../pages/dashboard/index.html"><i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Tổng quan</span></a>
         </li>
+        <!-- 
+           <li class="nav-item">
+          <button
+            class="admin-btn"
+            :class="{ active: selectedOption === 'orders' }"
+            @click="selectedOption = 'orders'"
+          >
+            Quản lý đơn hàng
+          </button>
+        </li>
+         -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-shopping-cart"></i>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" :class="{ active: selectedOption === 'orders' }"
+            @click="selectedOption = 'orders'"><i class="fas fa-shopping-cart"></i>
             <span>Đơn hàng</span></a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="../../pages/order/list.html">Danh sách</a>
-            <a class="dropdown-item" href="../../pages/order/add.html">Thêm</a>
-          </div>
+
         </li>
         <li class="nav-item dropdown  active show">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fab fa-product-hunt"></i>
             <span>Sản phẩm</span></a>
           <div class="dropdown-menu show" aria-labelledby="">
-            <a class="dropdown-item active"  :class="{ active: selectedOption === 'products' }"
-            @click="selectedOption = 'products'" >Danh sách</a>
+            <a class="dropdown-item active" :class="{ active: selectedOption === 'products' }"
+              @click="selectedOption = 'products'">Danh sách</a>
             <a class="dropdown-item" :class="{ active: selectedOption === 'productsAdd' }"
-            @click="selectedOption = 'productsAdd'">Thêm</a>
+              @click="selectedOption = 'productsAdd'">Thêm</a>
             <a class="dropdown-item" :class="{ active: selectedOption === 'productsEdit' }"
-            @click="selectedOption = 'productsEdit'">Cập Nhật</a>
+              @click="selectedOption = 'productsEdit'">Cập Nhật</a>
           </div>
         </li>
-        <!--  <li class="nav-item">
+        <li class="nav-item dropdown active show">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-user-alt"></i>
+            <span>Người Dùng</span></a>
+          <div class="dropdown-menu show" aria-labelledby="">
+            <a class="dropdown-item" :class="{ active: selectedOption === 'users' }"
+              @click="selectedOption = 'users'">Danh sách</a>
+            <a class="dropdown-item" :class="{ active: selectedOption === 'usersAdd' }"
+              @click="selectedOption = 'usersAdd'">Thêm</a>
+            <a class="dropdown-item" :class="{ active: selectedOption === 'usersEdit' }"
+              @click="selectedOption = 'usersEdit'">Cập Nhật</a>
+          </div>
+          <!--  <li class="nav-item">
           <button
             class="admin-btn"
-            :class="{ active: selectedOption === 'productsAdd' }"
-            @click="selectedOption = 'productsAdd'"
+            :class="{ active: selectedOption === 'users' }"
+            @click="selectedOption = 'users'"
           >
-            Thêm Sản Phẩm
+            Quản lý người dùng
           </button>
         </li> -->
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-comments"></i>
             <span>Bình Luận </span></a>
@@ -120,31 +139,7 @@
             <a class="dropdown-item" href="../../pages/image/list.html">Danh sách</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-user-alt"></i>
-            <span>Khách hàng</span></a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="../../pages/customer/list.html">Danh sách</a>
-            <a class="dropdown-item" href="../../pages/customer/add.html">Thêm</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-folder"></i>
-            <span>Danh mục</span></a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="../../pages/category/list.html">Danh sách</a>
-            <a class="dropdown-item" href="../../pages/category/add.html">Thêm</a>
-          </div>
-        </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-percentage"></i>
-            <span>Khuyến mãi</span></a>
-          <div class="dropdown-menu" aria-labelledby="">
-            <a class="dropdown-item" href="../../pages/promotion/list.html">Danh sách</a>
-            <a class="dropdown-item" href="../../pages/promotion/add.html">Thêm</a>
-          </div>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-shipping-fast"></i>
             <span>Phí giao hàng</span></a>
@@ -188,7 +183,8 @@
       <managers-products-add v-if="selectedOption === 'productsAdd'" />
       <manage-users v-if="selectedOption === 'users'" />
       <manage-orders v-if="selectedOption === 'orders'" />
-
+      <manage-users-add v-if="selectedOption === 'usersAdd'" />
+      <ManagersUsersEdit v-if="selectedOption === 'usersEdit'" />
       <!-- /.content-wrapper -->
     </div>
     <!-- /#wrapper -->
@@ -222,9 +218,11 @@
 <script>
 import ManageProducts from "../components/AdminManagersProducts.vue";
 import ManageUsers from "../components/AdminManagersUsers.vue";
+import ManageUsersAdd from "../components/AdminManagersUsersAdd.vue";
 import ManageOrders from "../components/AdminManagersOrders.vue";
 import ManagersProductsEdit from "../components/AdminManagersProductsEdit.vue";
 import ManagersProductsAdd from "../components/AdminManagersProductsadd.vue";
+import ManagersUsersEdit from "../components/AdminManagersUsersEdit.vue";
 export default {
   components: {
     ManageProducts,
@@ -232,6 +230,8 @@ export default {
     ManageOrders,
     ManagersProductsEdit,
     ManagersProductsAdd,
+    ManageUsersAdd,
+    ManagersUsersEdit,
   },
   data() {
     return {
