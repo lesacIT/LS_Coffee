@@ -17,6 +17,7 @@
           <button class="btn-search" @click="search">
             <fa class="icon" icon="fa-search" />
           </button>
+          
         </form>
         <router-link v-if="loggedIn && user.result.isAdmin" to="/admin">Quản lý</router-link>
         <a v-if="loggedIn">{{ user.result.name }}</a>

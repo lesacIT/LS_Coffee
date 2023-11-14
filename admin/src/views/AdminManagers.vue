@@ -1,57 +1,4 @@
 <template>
-  <!-- <div class="nav-container">
-    <nav class="navbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'products' }"
-            @click="selectedOption = 'products'"
-          >
-            Quản lý sản phẩm danh sách sản phẩm
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'productsEdit' }"
-            @click="selectedOption = 'productsEdit'"
-          >
-            Quản lý chỉnh sửa sản phẩm 
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'users' }"
-            @click="selectedOption = 'users'"
-          >
-            Quản lý người dùng
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'orders' }"
-            @click="selectedOption = 'orders'"
-          >
-            Quản lý đơn hàng
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'productsAdd' }"
-            @click="selectedOption = 'productsAdd'"
-          >
-            Thêm Sản Phẩm
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </div> -->
-
-
   <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
       <a class="navbar-brand mr-1" href="index.html">LS Coffee</a>
@@ -63,7 +10,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item no-arrow text-white">
           <span>Chào Nguyễn Lê Sắc</span> |
-          <a class="text-white nounderline" href="#" data-toggle="modal" data-target="#logoutModal">Thoát</a>
+          <a class="text-white nounderline" @click="logout">Thoát</a>
         </li>
       </ul>
     </nav>
@@ -71,20 +18,9 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="../../pages/dashboard/index.html"><i class="fas fa-fw fa-tachometer-alt"></i>
+          <a class="nav-link" href="/admin"><i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Tổng quan</span></a>
         </li>
-        <!-- 
-           <li class="nav-item">
-          <button
-            class="admin-btn"
-            :class="{ active: selectedOption === 'orders' }"
-            @click="selectedOption = 'orders'"
-          >
-            Quản lý đơn hàng
-          </button>
-        </li>
-         -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" :class="{ active: selectedOption === 'orders' }"
             @click="selectedOption = 'orders'"><i class="fas fa-shopping-cart"></i>
@@ -101,6 +37,8 @@
               @click="selectedOption = 'productsAdd'">Thêm</a>
             <a class="dropdown-item" :class="{ active: selectedOption === 'productsEdit' }"
               @click="selectedOption = 'productsEdit'">Cập Nhật</a>
+            <a class="dropdown-item" :class="{ active: selectedOption === 'productsSearch' }"
+              @click="selectedOption = 'productsSearch'">Tìm Kiếm</a>
           </div>
         </li>
         <li class="nav-item dropdown active show">
@@ -124,13 +62,13 @@
           </button>
         </li> -->
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-comments"></i>
             <span>Bình Luận </span></a>
           <div class="dropdown-menu" aria-labelledby="">
             <a class="dropdown-item" href="../../pages/comment/list.html">Danh sách</a>
           </div>
-        </li>
+        </li> -->
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="far fa-image"></i>
@@ -140,7 +78,7 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id=""><i class="fas fa-shipping-fast"></i>
             <span>Phí giao hàng</span></a>
           <div class="dropdown-menu" aria-labelledby="">
@@ -176,7 +114,7 @@
             <a class="dropdown-item" href="../../pages/newsletter/list.html">Danh sách</a>
             <a class="dropdown-item" href="../../pages/newsletter/send.html">Gởi mail</a>
           </div>
-        </li>
+        </li> -->
       </ul>
       <manage-products v-if="selectedOption === 'products'" />
       <managers-products-edit v-if="selectedOption === 'productsEdit'" />
@@ -185,6 +123,7 @@
       <manage-orders v-if="selectedOption === 'orders'" />
       <manage-users-add v-if="selectedOption === 'usersAdd'" />
       <ManagersUsersEdit v-if="selectedOption === 'usersEdit'" />
+      <ManagersProductsSearch v-if="selectedOption === 'productsSearch'" />
       <!-- /.content-wrapper -->
     </div>
     <!-- /#wrapper -->
@@ -223,6 +162,7 @@ import ManageOrders from "../components/AdminManagersOrders.vue";
 import ManagersProductsEdit from "../components/AdminManagersProductsEdit.vue";
 import ManagersProductsAdd from "../components/AdminManagersProductsadd.vue";
 import ManagersUsersEdit from "../components/AdminManagersUsersEdit.vue";
+import ManagersProductsSearch from "../components/AdminManagersProductsaddseach.vue";
 export default {
   components: {
     ManageProducts,
@@ -232,14 +172,42 @@ export default {
     ManagersProductsAdd,
     ManageUsersAdd,
     ManagersUsersEdit,
+    ManagersProductsSearch,
   },
   data() {
     return {
       selectedOption: "products",
     };
   },
+
+  // thoát đăng nhập admin
+  computed: {
+    loggedIn() {
+      return !!this.user;
+    },
+  },
+  methods: {
+    logout() {
+      this.$router.push("/");
+      this.updateUser(null);
+      localStorage.removeItem("user");
+    },
+    async search() {
+      if (this.searchTerm.trim() === "") {
+        return;
+      }
+
+      try {
+        const searchTerm = this.searchTerm;
+        this.$router.push({ name: "SearchPage", params: { searchTerm } });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
 };
 </script>
+
 <style>
 .nav-container {
   margin: 0 auto;

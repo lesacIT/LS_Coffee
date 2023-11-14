@@ -1,64 +1,102 @@
 <template>
-  <div class="admin-page-wrap">
-    <h1>Trang quản lý sản phẩm</h1>
+  <div id="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <form class="search" @submit.prevent="search">
+          <input type="text" v-model="searchTerm" placeholder="Tìm kiếm sản phẩm" />
 
-    <form class="admin-form" @submit.prevent="addProduct">
-      <h2 v-if="this.editingIndex === null">Thêm sản phẩm mới</h2>
-      <h2 v-else>Sửa sản phẩm</h2>
+          <button class="btn-search" @click="search">
+            <fa class="icon" icon="fa-search" />
+          </button>
 
-      <label>
-        Tên sản phẩm:
-        <input type="text" v-model="newProduct.name" />
-      </label>
+        </form>
+      </ol>
+      <!-- DataTables Example -->
+      <!-- <div class="action-bar">
+            <input type="submit" class="btn btn-primary btn-sm" value="Thêm" name="add">
+            <input type="submit" class="btn btn-danger btn-sm" value="Xóa" name="delete">
+          </div> -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" onclick="checkAll(this)"></th>
+                  <th>Mã SP</th>
+                  <th style="width:50px">Tên Sản Phẩm </th>
+                  <th>Hình ảnh</th>
+                  <th>Giá bán sản phẩm</th>
+                  <th>Đánh giá</th>
+                  <th style="max-width:800px;text-align: center;">Mô Tả</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(product, index) in products" :key="index">
 
-      <label>
-        Mô tả:
-        <textarea v-model="newProduct.description"></textarea>
-      </label>
-      <label>
-        Link hình ảnh:
-        <input type="text" v-model="newProduct.imageUrl" />
-      </label>
+                  <td><input type="checkbox"></td>
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ product.name }}</td>
+                  <td><img :src="product.imageUrl"></td>
+                  <td>{{ product.price }} VND</td>
+                  <td>{{ product.averageRating }}</td>
+                  <td style="max-width:800px">{{ product.description }}</td>
 
-      <label>
-        Giá:
-        <input type="text" v-model="newProduct.price" />
-      </label>
+                  <td><input type="button" @click="deleteProduct(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
 
-      <button v-if="this.editingIndex === null" type="submit">
-        Thêm sản phẩm
-      </button>
-      <button v-else type="submit">Sửa sản phẩm</button>
-    </form>
 
-    <h2>Danh sách sản phẩm</h2>
+                </tr>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Hình ảnh</th>
-          <th>Tên sản phẩm</th>
-          <th>Mô tả</th>
-          <th>Giá</th>
-          <th>Sửa</th>
-          <th>Xóa</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(product, index) in products" :key="index">
-          <td><img :src="product.imageUrl" /></td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.description }}</td>
-          <td>{{ product.price }}</td>
-          <td><button @click="editProduct(index)">Sửa</button></td>
-          <td><button @click="deleteProduct(index)">Xóa</button></td>
-        </tr>
-      </tbody>
-    </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Nguyễn Lê Sắc @2023</span>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
+
 <script>
+/*Custom fonts for this template */
+import "../../vendor/fontawesome-free/css/all.min.css";
+/*Page level plugin CSS*/
+import "../../vendor/datatables/dataTables.bootstrap4.css"
+/* Custom styles for this template */
+import "../../css/sb-admin.css";
+import "../../css/admin.css"
+
+
+/*
+
+<!-- Create favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="../../images/logo.jpg" />
+      <!-- Custom fonts for this template-->
+      <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <!-- Page level plugin CSS-->
+      <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+      <!-- Custom styles for this template-->
+      <link href="../../css/sb-admin.css" rel="stylesheet">
+      <link href="../../css/admin.css" rel="stylesheet">
+
+*/
+// import "../../vendor/jquery/jquery.min.js";
+// import "../../vendor/bootstrap/js/bootstrap.bundle.min.js";
+
+
+
+
 import { v4 as uuidv4 } from "uuid";
 export default {
   name: "manage-products",
@@ -161,8 +199,22 @@ export default {
         console.error(error);
       }
     },
+    async search() {
+      if (this.searchTerm.trim() === "") {
+        return;
+      }
+
+      try {
+        const searchTerm = this.searchTerm;
+        this.$router.push({ name: "SearchPage", params: { searchTerm } });
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
+
 };
+
 </script>
 <style>
 .admin-page-wrap {
@@ -170,15 +222,18 @@ export default {
   min-height: 100vh;
   margin: auto;
 }
+
 h1 {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 img {
   height: 60px;
   width: 60px;
 }
+
 h2 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -213,6 +268,7 @@ button[type="submit"] {
   border-radius: 0.25rem;
   cursor: pointer;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -228,4 +284,39 @@ th {
   font-weight: bold;
   background-color: #f2f2f2;
 }
-</style>
+
+
+
+.navbar-nav {
+  justify-content: flex-start !important;
+  ;
+}
+
+.btn-search {
+  width: 34px;
+  height: 34px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-search .icon {
+  color: gray;
+  font-size: 20px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 0 0;
+}
+
+.search input {
+  border-radius: 10px 0 0 10px;
+  border: none;
+  outline: none;
+}
+</style> 

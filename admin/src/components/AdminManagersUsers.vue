@@ -98,6 +98,7 @@
                 <td><input type="button" @click="deleteUser(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
               </tr>
             </tbody>
+            
           </table>
         </div>
       </div>
