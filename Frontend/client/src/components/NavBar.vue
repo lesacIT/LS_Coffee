@@ -30,7 +30,7 @@
             </a>
           </div> -->
         </form>
-        <router-link v-if="loggedIn && user.result.isAdmin" to="">Quản lý</router-link>
+        <!-- <router-link v-if="loggedIn && user.result.isAdmin" to="">Quản lý</router-link> -->
         <a v-if="loggedIn">{{ user.result.name }}</a>
         <a v-if="loggedIn" @click="logout">
           <fa icon="fa-solid fa-right-from-bracket" size="xl" />

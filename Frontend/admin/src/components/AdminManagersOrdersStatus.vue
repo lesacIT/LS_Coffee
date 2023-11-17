@@ -18,28 +18,36 @@
                   <th><input type="checkbox" onclick="checkAll(this)"></th>
                   <th>Mã</th>
                   <th>Tên khách hàng</th>
-                  <th>Email</th>
+                  <!-- <th>Email</th> -->
+                  <th>Trạng Thái Đơn Hàng</th>
                   <th>Tổng cộng</th>
-                  <th>Ngày Đặt</th>
-                  <th>Địa chỉ </th>
+                  <!-- <th>Ngày Đặt</th>
+                  <th>Địa chỉ </th> -->
                   <th>Sản Phẩm Đã Mua</th>
-
+                 
+                  <!-- <th></th>  -->
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="order in orders" :key="order._id">
+              <tbody v-for="order in orders" :key="order._id">
+                <tr  v-show="order.order_status === 'đang xử lí'">
                   <td><input type="checkbox"></td>
-                  <td>1</td>
+                  <td>{{ order._id }}</td>
                   <td>{{ order.name }}</td>
-                  <td>{{ order.email }}</td>
+                  <!-- <td>{{ order.email }}</td> -->
+                  <td v-if="order.order_status === 'giao hàng thành công'">Giao Hàng thành công</td>
+                  <td v-else-if="order.order_status === 'đang xử lí'">Đang Xử Lí</td>
+                  <td v-else>Chưa Xác Nhận</td>
                   <td>{{ order.totalPrice }}</td>
-                  <td>{{ order.date }}</td>
-                  <td>{{ order.address }}</td>
-                  <td v-for="item in order.cartItems" :key="item._id" style="display: flex;">
+                  <!-- <td>{{ order.date }}</td>
+                  <td>{{ order.address }}</td> -->
+                  <!-- <td v-for="item in order.cartItems" :key="item._id" style="display: flex;">
                     <li class="price">{{ item.product.name }}
                       {{ item.product.price }}đ x{{ item.quantity }}</li>
-                    <!-- <li class="price"></li> -->
-                  </td>
+                    <li class="price"></li>
+                  </td> -->
+
+                  <td v-if="order.order_status === 'giao hàng thành công'"></td>
+                  <td v-else><input type="button"  value="Xác Nhận" class="btn btn-danger btn-sm" style="max-width: 100px;"></td>
                 </tr>
               </tbody>
             </table>

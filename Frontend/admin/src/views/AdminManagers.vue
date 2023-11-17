@@ -27,8 +27,8 @@
             <span>Đơn hàng</span></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" :class="{ active: selectedOption === 'orders' }"
-            @click="selectedOption = 'orders'"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" :class="{ active: selectedOption === 'ordersstatus' }"
+            @click="selectedOption = 'ordersstatus'"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
             <span>Trạng thái đơn hàng</span></a>
         </li>
         <li class="nav-item dropdown  active show" >
@@ -114,7 +114,7 @@
       <ManagersUsersEdit v-if="selectedOption === 'usersEdit'" />
       <ManagersProductsSearch v-if="selectedOption === 'productsSearch'" />
       <ManagersProductsImg v-if="selectedOption === 'productsImg'" />
-      <!-- /.content-wrapper -->
+      <ManageOrdersStatus v-if="selectedOption === 'ordersstatus'" />
     </div>
     <!-- /#wrapper -->
     <!-- Scroll to Top Button-->
@@ -149,11 +149,13 @@ import ManageProducts from "../components/AdminManagersProducts.vue";
 import ManageUsers from "../components/AdminManagersUsers.vue";
 import ManageUsersAdd from "../components/AdminManagersUsersAdd.vue";
 import ManageOrders from "../components/AdminManagersOrders.vue";
+import ManageOrdersStatus from "../components/AdminManagersOrdersStatus.vue";
 import ManagersProductsEdit from "../components/AdminManagersProductsEdit.vue";
 import ManagersProductsAdd from "../components/AdminManagersProductsadd.vue";
 import ManagersUsersEdit from "../components/AdminManagersUsersEdit.vue";
 import ManagersProductsSearch from "../components/AdminManagersProductsaddseach.vue";
 import ManagersProductsImg from "../components/AdminManagersProductsImg.vue";
+
 export default {
   components: {
     ManageProducts,
@@ -165,6 +167,7 @@ export default {
     ManagersUsersEdit,
     ManagersProductsSearch,
     ManagersProductsImg,
+    ManageOrdersStatus,
   },
   data() {
     return {

@@ -43,7 +43,7 @@
           <label class="form__checkbox">
             <input type="checkbox" name="" class="form__checkbox-input d-none" id="confirm-password"
               />
-            <span class="form__checkbox-label">Set as default card</span>
+            <span class="form__checkbox-label">Đặt làm mặc định</span>
           </label>
         </div>
         <div class="form__group auth__btn-group">
@@ -51,7 +51,7 @@
 
           <button class="btn btn--outline auth__btn btn--no-margin">
             <img src="../assets/icons/google.svg" alt="" class="btn__icon icon" />
-            Sign in with Google
+            Đăng nhập với Google
           </button>
         </div>
       </form>

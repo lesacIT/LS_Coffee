@@ -275,6 +275,7 @@ async function startServer() {
       const db = client.db();
       const date = new Date();
       const dateNow = date.toISOString().slice(0, -14);
+      const order_status = "đang xử lí";
       const order = {
         userId: userId,
         name: name,
@@ -283,6 +284,7 @@ async function startServer() {
         cartItems: cartItems,
         totalPrice: totalPrice,
         date: dateNow,
+        order_status: order_status,
       };
       const result = await db.collection("orders").insertOne(order);
       res.status(200).json(result);
