@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <form class="search" @submit.prevent="search">
+        <form class="search" @submit.prevent="search" style="height: 50px;">
           <input type="text" v-model="searchTerm" placeholder="Tìm kiếm sản phẩm" />
 
           <button class="btn-search" @click="search">

@@ -1,12 +1,12 @@
 <template>
-  <div id="page-wrap">
+  <div id="page-wrap" style="width: 450px;">
     <div class="search-results" >
-      <h2> Kết quả tìm kiếm cho "{{ searchTerm }}"</h2>
+      <h2 style="margin-top: 20px; font-weight: 700;"> Kết quả tìm kiếm cho "{{ searchTerm }}"</h2>
       <div v-if="products.length === 0">
         <p>Không có sản phẩm nào phù hợp với từ khóa "{{ searchTerm }}"</p>
       </div>
 
-      <div class="grid-wrap">
+      <div class="grid-wrap" >
         <ProductsGridItem v-for="product in products" :key="product.id" :product="product" />
       </div>
     </div>
