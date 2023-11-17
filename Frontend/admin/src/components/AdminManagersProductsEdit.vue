@@ -1,0 +1,354 @@
+<template>
+  <div id="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Quản lý</a>
+        </li>
+        <li class="breadcrumb-item active">Sản phẩm</li>
+      </ol>
+      <div id="content-wrapper">
+        <div class="container-fluid">
+          <!-- /form -->
+          <form method="post" @submit.prevent="addProduct">
+            <h2 style="padding-left: 150px;">Cập Nhật sản phẩm</h2>
+            <div class="form-group row">
+              <label class="col-md-12 control-label" for="name">Tên </label>
+              <div class="col-md-9 col-lg-6">
+                <input name="name" id="name" v-model="newProduct.name" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 control-label" for="wholesale-price">Giá bán </label>
+              <div class="col-md-9 col-lg-6">
+                <input name="wholesale-price" id="wholesale-price" type="text" v-model="newProduct.price"
+                  class="form-control">
+              </div>
+            </div>
+
+            <!-- <div class="form-group row">
+              <label class="col-md-12 control-label" for="inventory-number">Lượng tồn</label>
+              <div class="col-md-9 col-lg-6">
+                <input name="inventory-number" id="inventory-number" type="text" value="" class="form-control">
+              </div>
+            </div> -->
+
+            <!-- <div class="form-group row">
+              <label class="col-md-12 control-label" for="category">Danh mục </label>
+              <div class="col-md-9 col-lg-6">
+                <select name="category" id="category" class="form-control">
+                  <option value="Kem Chống Nắng">Kem Chống Nắng</option>
+                  <option value="Kem Dưỡng Da">Kem Dưỡng Da</option>
+                  <option value="Kem Trị Mụn">Kem Trị Mụn</option>
+                  <option value="Kem Trị Thâm Nám">Kem Trị Thâm Nám</option>
+                  <option value="Sữa Rửa Mặt">Sữa Rửa Mặt</option>
+                  <option value="Sữa Tắm">Sữa Tắm</option>
+                </select>
+              </div>
+            </div> -->
+            <!-- <div class="form-group row">
+              <label class="col-md-12 control-label">Nổi bật</label>
+              <div class="col-md-9 col-lg-6">
+                <input type="checkbox" value="1">
+              </div>
+            </div> -->
+            <div class="form-group row">
+              <label class="col-md-12 control-label" for="image">Hình ảnh </label>
+              <div class="col-md-9 col-lg-6">
+                <input type="text" v-model="newProduct.imageUrl">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 control-label" for="description">Mô tả</label>
+              <div class="col-md-12">
+                <textarea name="description" id="description" rows="10" cols="80"
+                  v-model="newProduct.description"></textarea>
+              </div>
+
+            </div>
+            <!-- <div class="form-action">
+          <input type="submit" class="btn btn-primary btn-sm" value="Lưu" name="save">
+        </div> -->
+
+
+            <button type="submit">Cập Nhật sản phẩm</button>
+          </form>
+
+
+          <!-- /form -->
+          <!-- /.container-fluid -->
+          <!-- Sticky Footer -->
+
+        </div>
+        <!-- /.content-wrapper -->
+      </div>
+      <!-- DataTables Example -->
+      <!-- <div class="action-bar">
+            <input type="submit" class="btn btn-primary btn-sm" value="Thêm" name="add">
+            <input type="submit" class="btn btn-danger btn-sm" value="Xóa" name="delete">
+          </div> -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" onclick="checkAll(this)"></th>
+                  <th>Mã SP</th>
+                  <th style="width:50px">Tên Sản Phẩm </th>
+                  <th>Hình ảnh</th>
+                  <th>Giá bán sản phẩm</th>
+                  <th>Đánh giá</th>
+                  <th style="max-width:800px;text-align: center;">Mô Tả</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(product, index) in products" :key="index">
+
+                  <td><input type="checkbox"></td>
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ product.name }}</td>
+                  <td><img :src="product.imageUrl"></td>
+                  <td>{{ product.price }} VND</td>
+                  <td>{{ product.averageRating }}</td>
+                  <td style="max-width:800px">{{ product.description }}</td>
+                  <td><input type="button" @click="editProduct(index)" value="Sửa" class="btn btn-warning btn-sm"></td>
+                  <td><input type="button" @click="deleteProduct(index)" value="Xóa" class="btn btn-danger btn-sm"></td>
+
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Nguyễn Lê Sắc @2023</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</template>
+
+
+<script>
+/*Custom fonts for this template */
+import "../../vendor/fontawesome-free/css/all.min.css";
+/*Page level plugin CSS*/
+import "../../vendor/datatables/dataTables.bootstrap4.css"
+/* Custom styles for this template */
+import "../../css/sb-admin.css";
+import "../../css/admin.css"
+
+
+/*
+
+<!-- Create favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="../../images/logo.jpg" />
+      <!-- Custom fonts for this template-->
+      <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <!-- Page level plugin CSS-->
+      <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+      <!-- Custom styles for this template-->
+      <link href="../../css/sb-admin.css" rel="stylesheet">
+      <link href="../../css/admin.css" rel="stylesheet">
+
+*/
+// import "../../vendor/jquery/jquery.min.js";
+// import "../../vendor/bootstrap/js/bootstrap.bundle.min.js";
+
+
+
+
+import { v4 as uuidv4 } from "uuid";
+export default {
+  name: "manage-products",
+  data() {
+    return {
+      products: [],
+      newProduct: {
+        name: "",
+        description: "",
+        price: 0,
+      },
+      editingIndex: null,
+    };
+  },
+
+  mounted() {
+    this.loadProducts();
+  },
+
+  methods: {
+    async loadProducts() {
+      try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+        this.products = data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async addProduct() {
+      try {
+        if (
+          !this.newProduct.name ||
+          !this.newProduct.description ||
+          !this.newProduct.price ||
+          !this.newProduct.imageUrl
+        ) {
+          alert("Vui lòng nhập đầy đủ thông tin sản phẩm!"); // Kiểm tra các trường input không được trống
+          return;
+        }
+        if (this.editingIndex === null) {
+          // Thêm sản phẩm mới
+          const response = await fetch("/api/products", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: uuidv4(),
+              name: this.newProduct.name,
+              price: this.newProduct.price,
+              description: this.newProduct.description,
+              imageUrl: this.newProduct.imageUrl,
+              averageRating: "5.0",
+            }),
+          });
+          const data = await response.json();
+          this.products.push(data);
+          await this.loadProducts();
+        } else {
+          // Cập nhật sản phẩm
+          const product = this.products[this.editingIndex];
+          const response = await fetch(`/api/products/${product.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: product.id,
+              name: this.newProduct.name,
+              price: this.newProduct.price,
+              description: this.newProduct.description,
+              imageUrl: this.newProduct.imageUrl,
+              averageRating: product.averageRating,
+            }),
+          });
+          const data = await response.json();
+          this.products.splice(this.editingIndex, 1, data);
+          this.editingIndex = null;
+          await this.loadProducts(); // Reset biến editingIndex sau khi cập nhật sản phẩm
+        }
+        this.newProduct.name = "";
+        this.newProduct.description = "";
+        this.newProduct.price = 0;
+        this.newProduct.imageUrl = ""; // Reset giá trị của biến newProduct
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async editProduct(index) {
+      this.editingIndex = index; // Gán giá trị editingIndex bằng index sản phẩm đang được sửa
+      this.newProduct = Object.assign({}, this.products[index]); // Gán giá trị của sản phẩm đang được sửa cho biến newProduct
+    },
+
+    async deleteProduct(index) {
+      try {
+        const productId = this.products[index].id;
+        await fetch(`/api/products/${productId}`, {
+          method: "DELETE",
+        });
+        this.products.splice(index, 1);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+
+};
+</script>
+<style>
+.admin-page-wrap {
+  max-width: 800px;
+  min-height: 100vh;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+img {
+  height: 60px;
+  width: 60px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.admin-form {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+th {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+
+
+
+.navbar-nav {
+  justify-content: flex-start !important;
+  ;
+}
+</style> 
