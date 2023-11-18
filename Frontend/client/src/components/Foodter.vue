@@ -13,7 +13,7 @@
             Cà phê – điểm tựa của những giấc mơ.
           </p>
 
-          <p class="footer__help-text" style="padding-right: 60px;">Nhận tin tức và cập nhật về sản phẩm..</p>
+          <p class="footer__help-text" style="padding-right: 40px;">Nhận tin tức và cập nhật về sản phẩm..</p>
           <form action="" class="footer__form">
             <input type="text" class="footer__input" placeholder="Địa chỉ Email" />
             <button class="btn btn--primary">Gửi</button>

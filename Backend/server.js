@@ -334,6 +334,42 @@ async function startServer() {
         }
       }
     );
+    /* chức năng cập nhật trạng thái đơn hàng */
+    const { ObjectId } = require("mongodb");
+    app.put("/api/orders/:id", async (req, res) => {
+
+      // try {
+      //   const orderId = req.params.id;
+      //   const { order_status } = req.body;
+      //   const orders = await db.collection("orders")
+      //   // await orders.findByIdAndUpdate(orderId, { order_status });
+      //   console.log(req.body)
+
+      //   res.json({ success: true });
+      // } catch (error) {
+      //   res.status(500).send(error.message);
+      // }
+      try {
+        console.log(req.body);
+        const orderId = req.params.id;
+        const { order_status } = req.body;
+        const db = client.db();
+        const orders = await db.collection("orders")
+        let data = await orders.updateOne({ _id: new ObjectId(orderId) }, { $set: { order_status } });
+        console.log(req.body)
+        console.log(data)
+        console.log(orderId)
+        res.json({ success: true });
+      }
+      catch (error) {
+        // res.status(500).send(error.message);
+        console.log(error);
+      }
+    });
+
+
+
+
     app.post("/api/login", async (req, res) => {
       try {
         const db = client.db();

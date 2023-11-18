@@ -24,12 +24,12 @@
                   <!-- <th>Ngày Đặt</th>
                   <th>Địa chỉ </th> -->
                   <th>Sản Phẩm Đã Mua</th>
-                 
+
                   <!-- <th></th>  -->
                 </tr>
               </thead>
               <tbody v-for="order in orders" :key="order._id">
-                <tr  v-show="order.order_status === 'đang xử lí'">
+                <tr v-show="order.order_status === 'đang xử lí'">
                   <td><input type="checkbox"></td>
                   <td>{{ order._id }}</td>
                   <td>{{ order.name }}</td>
@@ -47,7 +47,13 @@
                   </td> -->
 
                   <td v-if="order.order_status === 'giao hàng thành công'"></td>
-                  <td v-else><input type="button"  value="Xác Nhận" class="btn btn-danger btn-sm" style="max-width: 100px;"></td>
+
+                  <!-- <td v-else><input type="button" value="Xác Nhận" class="btn btn-danger btn-sm"
+                      style="max-width: 100px;"></td> -->
+                  <td v-else><input type="button" value="Xác Nhận" class="btn btn-danger btn-sm"
+                      style="max-width: 100px;" 
+                      @click="confirmOrder(order._id)"
+                      ></td>
                 </tr>
               </tbody>
             </table>
@@ -94,9 +100,33 @@ export default {
       console.error(error);
     }
   },
+  mounted() {
+    this.fetchOrders();
+  },
   methods: {
     showDetail(order) {
       order.showDetail = !order.showDetail;
+    },
+
+    // cập nhật trạng thái đơn hàng
+    async fetchOrders() {
+      try {
+        const response = await axios.get('/api/orders');
+        this.orders = response.data;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+    async confirmOrder(orderId) {
+      try {
+        await axios.put(`/api/orders/${orderId}`, {
+          order_status: 'Giao Hàng Thành Công',
+        });
+
+        this.fetchOrders();
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
   },
 };
