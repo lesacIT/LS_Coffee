@@ -20,54 +20,54 @@
       </div>
     </div>
   </div>
-   <!-- Browse Categories -->
-   <div style="margin: 15px;">
+  <!-- Browse Categories -->
+  <div style="margin: 15px;">
     <section class="home__container">
-                <div class="home__row">
-                    <h2 class="home__heading">Danh Mục</h2>
-                </div>
-                <div class="home__cate row row-cols-3 row-cols-md-1">
-                    <!-- Category item 1 -->
-                    <div class="col">
-                        <a href="#!">
-                            <article class="cate-item">
-                                <img src="../assets/img/category-item/item-1.png" alt="" class="cate-item__thumb" />
-                                <div class="cate-item__info">
-                                    <h3 class="cate-item__title">Cà phê đóng gói</h3>
-                                    <p class="cate-item__desc">10.000đ - 40.000đ</p>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
+      <div class="home__row">
+        <h2 class="home__heading">Danh Mục</h2>
+      </div>
+      <div class="home__cate row row-cols-3 row-cols-md-1">
+        <!-- Category item 1 -->
+        <div class="col">
+          <a href="#!">
+            <article class="cate-item">
+              <img src="../assets/img/category-item/item-1.png" alt="" class="cate-item__thumb" />
+              <div class="cate-item__info">
+                <h3 class="cate-item__title">Cà Phê Đóng Gói</h3>
+                <p class="cate-item__desc">10.000đ - 40.000đ</p>
+              </div>
+            </article>
+          </a>
+        </div>
 
-                    <!-- Category item 2 -->
-                    <div class="col">
-                        <a href="#!">
-                            <article class="cate-item">
-                                <img src="../assets/img/category-item/item-2.png" alt="" class="cate-item__thumb" />
-                                <div class="cate-item__info">
-                                    <h3 class="cate-item__title">Cà Phê Túi</h3>
-                                    <p class="cate-item__desc">100.000đ - 400.000đ</p>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
+        <!-- Category item 2 -->
+        <div class="col">
+          <a href="#!">
+            <article class="cate-item">
+              <img src="../assets/img/category-item/item-2.png" alt="" class="cate-item__thumb" />
+              <div class="cate-item__info">
+                <h3 class="cate-item__title">Cà Phê Túi</h3>
+                <p class="cate-item__desc">100.000đ - 400.000đ</p>
+              </div>
+            </article>
+          </a>
+        </div>
 
-                    <!-- Category item 3 -->
-                    <div class="col">
-                        <a href="#!">
-                            <article class="cate-item">
-                                <img src="../assets/img/category-item/item-3.png" alt="" class="cate-item__thumb" />
-                                <div class="cate-item__info">
-                                    <h3 class="cate-item__title">Cà Phê Cao Cấp</h3>
-                                    <p class="cate-item__desc">1.000.000đ - 15.000.000đ</p>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-            </section>
-   </div>
+        <!-- Category item 3 -->
+        <div class="col">
+          <a href="#!">
+            <article class="cate-item">
+              <img src="../assets/img/category-item/item-3.png" alt="" class="cate-item__thumb" />
+              <div class="cate-item__info">
+                <h3 class="cate-item__title">Cà Phê Cao Cấp</h3>
+                <p class="cate-item__desc">1.000.000đ - 15.000.000đ</p>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
